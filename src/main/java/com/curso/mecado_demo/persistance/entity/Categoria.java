@@ -9,12 +9,12 @@ import java.util.List;
 @Table(name = "categorias")
 public class Categoria {
 
-    @Column(name = "id_categoria")
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_categoria")
     private Integer idCategoria;
 
-    private String description;
+    private String descripcion;
     private Boolean estado;
 
     @OneToMany(mappedBy = "categoria")
@@ -28,12 +28,12 @@ public class Categoria {
         this.idCategoria = idCategoria;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public Boolean getEstado() {
@@ -43,4 +43,13 @@ public class Categoria {
     public void setEstado(Boolean estado) {
         this.estado = estado;
     }
+
+    public List<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<Producto> productos) {
+        this.productos = productos;
+    }
 }
+
