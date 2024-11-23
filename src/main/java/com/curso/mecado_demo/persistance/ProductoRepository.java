@@ -17,7 +17,7 @@ public class ProductoRepository implements ProductRepository {
     @Autowired
     private ProductoCrudRepository productoCrudRepository;
 
-    @Qualifier("productMapper")
+    @Qualifier("productMapperImpl")
     @Autowired
     private ProductMapper mapper;
 
