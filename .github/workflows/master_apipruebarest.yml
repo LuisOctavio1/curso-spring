@@ -19,6 +19,11 @@ jobs:
           java-version: '17'
           distribution: 'adoptopenjdk'
 
+      - name: Set up Gradle
+        uses: gradle/wrapper-validation-action@v1
+        with:
+          gradle-version: '8.1'  # Asegúrate de que la versión coincida con la de tu proyecto
+
       - name: Build with Gradle
         run: ./gradlew build --no-daemon
 
@@ -57,4 +62,3 @@ jobs:
           app-name: 'apiPruebaRest'
           slot-name: 'Production'
           package: './build/libs/mecado-demo-1.0.jar'
-          
