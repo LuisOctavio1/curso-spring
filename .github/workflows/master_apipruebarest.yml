@@ -43,6 +43,9 @@ jobs:
           name: java-app
           path: '${{ github.workspace }}/build/libs/*.jar'
 
+      - name: List files in build/libs
+        run: ls -l ./build/libs/
+
   deploy:
     runs-on: ubuntu-latest
     needs: build
