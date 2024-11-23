@@ -2,7 +2,7 @@ package com.curso.mecado_demo.persistance.crud;
 
 import com.curso.mecado_demo.persistance.entity.Compra;
 import org.springframework.data.repository.CrudRepository;
-
+//
 import java.util.List;
 import java.util.Optional;
 
