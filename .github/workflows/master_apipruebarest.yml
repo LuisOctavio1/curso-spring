@@ -55,9 +55,9 @@ jobs:
 
       - name: Print environment variables
         run: |
-        echo "SPRING_DATASOURCE_URL=${{ secrets.SPRING_DATASOURCE_URL }}"
-        echo "SPRING_DATASOURCE_USERNAME=${{ secrets.SPRING_DATASOURCE_USERNAME }}"
-        echo "SPRING_DATASOURCE_PASSWORD=${{ secrets.SPRING_DATASOURCE_PASSWORD }}"
+          echo "SPRING_DATASOURCE_URL=${{ secrets.SPRING_DATASOURCE_URL }}"
+          echo "SPRING_DATASOURCE_USERNAME=${{ secrets.SPRING_DATASOURCE_USERNAME }}"
+          echo "SPRING_DATASOURCE_PASSWORD=${{ secrets.SPRING_DATASOURCE_PASSWORD }}"
 
       - name: Set environment variables from GitHub secrets
         run: |
@@ -77,4 +77,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: test-report
-          path: build/reports/tests/test/index.html
+          path: build/reports/tests/test/index.htmlml
