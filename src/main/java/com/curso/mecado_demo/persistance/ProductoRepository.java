@@ -6,6 +6,7 @@ import com.curso.mecado_demo.persistance.crud.ProductoCrudRepository;
 import com.curso.mecado_demo.persistance.entity.Producto;
 import com.curso.mecado_demo.persistance.mapper.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class ProductoRepository implements ProductRepository {
     @Autowired
     private ProductoCrudRepository productoCrudRepository;
 
+    @Qualifier("productMapper")
     @Autowired
     private ProductMapper mapper;
 
