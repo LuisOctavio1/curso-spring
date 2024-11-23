@@ -18,7 +18,7 @@ public class PurchaseController {
 
     @Autowired
     private PurchaseService purchaseService;
-W
+
     @GetMapping("/all")
     public ResponseEntity<List<Purchase>> getAll(){
         return new ResponseEntity<>(purchaseService.getAll(), HttpStatus.OK);
