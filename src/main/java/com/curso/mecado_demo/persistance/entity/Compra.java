@@ -3,6 +3,7 @@ package com.curso.mecado_demo.persistance.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -28,7 +29,7 @@ public class Compra {
     @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
     private Cliente cliente;
 
-    @OneToMany(mappedBy = "compra")
+    @OneToMany(mappedBy = "compra",cascade = {CascadeType.ALL})
     private List<ComprasProducto> productos;
 
     public Integer getIdCompra() {
@@ -88,6 +89,7 @@ public class Compra {
     }
 
     public List<ComprasProducto> getProductos() {
+
         return productos;
     }
 

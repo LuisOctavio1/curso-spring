@@ -3,7 +3,7 @@ package com.curso.mecado_demo.persistance.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "compras_producto")
+@Table(name = "compras_productos")
 public class ComprasProducto {
     @EmbeddedId
     private ComprasProductoPK id;
@@ -13,6 +13,7 @@ public class ComprasProducto {
     private Boolean estado;
 
     @ManyToOne
+    @MapsId("idCompra")
     @JoinColumn(name = "id_compra", insertable = false, updatable = false)
     private Compra compra;
 
