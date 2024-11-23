@@ -19,10 +19,8 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Set up Gradle
-        uses: gradle/wrapper-validation-action@v1
-        with:
-          gradle-version: '8.1'  # Asegúrate de que la versión coincida con la de tu proyecto
+      - name: Give execute permission to gradlew
+        run: chmod +x gradlew
 
       - name: Build with Gradle
         run: ./gradlew build --no-daemon
@@ -40,7 +38,7 @@ jobs:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
-      id-token: write #This is required for requesting the JWT
+      id-token: write
 
     steps:
       - name: Download artifact from build job
@@ -51,9 +49,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_A45BE0D533374DEDAB014DF8C63A4481 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_0FAF22EBDFA3409693B640F516EBA897 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_83822BB670B04B408833F5C18FDECAAC }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
