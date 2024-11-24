@@ -204,6 +204,8 @@ Obtiene todos los porductos de una categoria
 Hay mas Endpoints y tambien ire actualizando mas hasta tener toda la base conectana con la api.
 
 Por cuestiones de los precios de azure no siempre estara la api activa
+La url de la documentacion
+https://apipruebarest-cxgjb0bcg5d2a6f9.mexicocentral-01.azurewebsites.net/mercado/api/swagger-ui/index.html#/
 
 
 
