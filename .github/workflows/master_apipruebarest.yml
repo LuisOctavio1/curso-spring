@@ -9,8 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write  # Aquí también se configura la autorización
 
     steps:
       - uses: actions/checkout@v4
@@ -46,8 +44,23 @@ jobs:
           path: '${{ github.workspace }}/build/libs/*.jar'
 
       - name: List files in build/libs
-        run: ls -l build/libs/
-    
+        run: ls -l build/libs/ 
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: 'Production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+    permissions:
+      id-token: write
+
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v4
+        with:
+          name: java-app
+
       - name: Login to Azure
         uses: azure/login@v2
         with:
@@ -55,10 +68,19 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_0FAF22EBDFA3409693B640F516EBA897 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_83822BB670B04B408833F5C18FDECAAC }}
 
+      - name: Extract artifact
+        run: unzip java-app.zip -d extracted
+
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'apiPruebaRest'
           slot-name: 'Production'
-          package: './build/libs/mecado-demo-1.0.jar'
+          package: './extracted/mecado-demo-1.0.jar'
+
+      - name: Upload test report as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-report
+          path: build/reports/tests/test/index.htmlml
