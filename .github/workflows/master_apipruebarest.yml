@@ -44,7 +44,7 @@ jobs:
           path: '${{ github.workspace }}/build/libs/*.jar'
 
       - name: List files in build/libs
-        run: ls -l
+        run: ls build/libs/
 
   deploy:
     runs-on: ubuntu-latest
@@ -74,7 +74,7 @@ jobs:
         with:
           app-name: 'apiPruebaRest'
           slot-name: 'Production'
-          package: './build/libs/mecado-demo-1.0.jar'
+          package: '/build/libs/mecado-demo-1.0.jar'
 
       - name: Upload test report as artifact
         uses: actions/upload-artifact@v4
