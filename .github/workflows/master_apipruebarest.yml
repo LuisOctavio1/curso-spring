@@ -59,7 +59,7 @@ jobs:
         with:
           name: java-app
       - name: List files in build/libs
-        run: ls -l build/libs/ 
+        run: ls -l
 
       - name: Login to Azure
         uses: azure/login@v2
