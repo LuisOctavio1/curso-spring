@@ -203,5 +203,7 @@ Obtiene todos los porductos de una categoria
 ```
 Hay mas Endpoints y tambien ire actualizando mas hasta tener toda la base conectana con la api.
 
+Por cuestiones de los precios de azure no siempre estara la api activa
+
 
 
