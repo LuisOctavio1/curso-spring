@@ -74,7 +74,7 @@ jobs:
         with:
           app-name: 'apiPruebaRest'
           slot-name: 'Production'
-          package: './java-app/mecado-demo-1.0.jar'
+          package: '/home/runner/work/mi-proyecto/build/libs/mecado-demo-1.0.jar'
 
       - name: Upload test report as artifact
         uses: actions/upload-artifact@v4
