@@ -44,7 +44,7 @@ jobs:
           path: '${{ github.workspace }}/build/libs/*.jar'
 
       - name: List files in build/libs
-        run: ls build/libs/
+        run: ls -l build/libs/ 
 
   deploy:
     runs-on: ubuntu-latest
